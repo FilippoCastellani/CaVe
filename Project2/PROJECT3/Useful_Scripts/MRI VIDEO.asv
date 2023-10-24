@@ -1,0 +1,31 @@
+clear all, close all, clc
+
+% Please note that in order to use the montage and immovie function the input 
+% should a 4D matrix with dimension NxMx1xV where V is the number of frame 
+% (multiframe image arrays). If images are indexed, they should have the same colormap. 
+
+% Load the file mri.mat
+lo<<ad mri.mat 
+
+% Visualized the slice number 25 
+
+% tip: firstly check out available data 
+size( D )       % it can be used by 'montage' and 'immovie' functions
+max( D(:) ), min( D(:) ) 
+size( map )     % indexed image 
+max( map ), min( map ) 
+
+figure
+imshow(D(:,:,:,135), map, 'InitialMagnification', 'fit'), title('slice (frame) 25')
+
+%% "WRONG" USE OF D
+% Use the provided functions to obtain meaningful representations of the mri recording
+
+figure          % "wrong" because displays the image as uint8 grayscale
+montage(D)
+%% RIGHT USE OF D
+figure          % "correct" because we are dealing with an indexed image
+montage(D, map)
+%% 1. see all slices + 2. create the video
+mri_movie = immovie(D, map); 
+implay(mri_movie)
