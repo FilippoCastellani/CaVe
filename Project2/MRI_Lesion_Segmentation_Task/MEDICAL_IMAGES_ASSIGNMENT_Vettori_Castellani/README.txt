@@ -8,4 +8,4 @@ SCRIPTS
 DATA FILES
 MRIdata		=	contains the assignment datas
 camera_settings	= 	contains datas for visualization of segmentation
-segmented_volume= 	contains the final result of script (1) applied on datas 
+segmented_volume= 	contains the final result of script (1) applied on data
