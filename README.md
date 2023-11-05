@@ -69,6 +69,101 @@ Consequently, the studied algorithms were implemented in Matlab and tested on re
 > 
 > **A:** Quasi-Automatic means that the user has to manually select the region of interest (ROI) in the first slice of the MRI image, and then the algorithm will automatically segment the lesion in the other slices of the image.
 
+**Dataset:**
+
+    - 1                         = number of subjects
+    - 256x256x112 voxels        = MRI volume size
+    - 0.9375, 0.9375, 1.4000    = voxel size (mm)
+    - T1-weighted               = MRI type
+
+<p align="center">
+    <img src="Meta_Media/volume.jpg" alt="Original MRI" width="30%">
+    <br>
+    <i> Click on the image to see the full size version </i>
+</p>
+
+**Purpose:**
+- Segment the lesion and calculate the respective cross-sectional area over sagittal slice number 135.
+- Identify sagittal slices that contain the lesion and extend the quantification of its cross-sectional area to the whole volume.
+- Repeat this process across axial slices.
+- Add noise to the original dataset and check the performances of your implemented workflow with respect to different levels of noise.
+
+**Method:**
+
+
+The following method is graphically represented in the following document: [here](Project2/MEDICAL_IMAGES_ASSIGNMENT_Vettori_Castellani/ppt_presentation.pdf).
+
+The method developed is based on the following main steps:
+1. The very first slice of the MRI volume is selected by the field expert (FE) (presumably a radiologist) as well as the region of interest (ROI) in the first slice.
+
+<p align="center">
+    <img src="Meta_Media/sagittal_slice130.png" alt="Slice 130" width="30%">
+    <br>
+    <i> Slice 135: Click on the image to see the full size version </i>
+</p>
+
+2. The selected ROI is enhanced by the algorithm using a non-linear filter.
+    This filter was one of the main contributions of the project since it was developed by the team. See the [Non-linear filter](#non-linear-filter) section for more details.
+3. The enhanced ROI is then binarized using one of the most common binarization techniques: Otsu's method.
+4. The binarized ROI is then proposed to the FE for approval. If the FE approves the binarization, the algorithm proceeds to the next step, otherwise the FE can manually modify the binarization.
+5. The algorithm then proceeds automatically to the segmentation of the lesion in the other slices of the MRI.
+This is achieved by repeating steps 2-4 for each slice of the MRI volume and selecting the binarized area that has the closest overlap with the centroid of the binarized area of the previous slice.
+
+NOTICE: In order not to "lose" the lesion in case of a wrong binarization, the algorithm keeps track of the previous binarizations and uses the centroids as a reference for the next slice by weighting them with a [recursive factor](#recursive-weighting-factor).
+
+**Results:**
+
+The algorithm was tested on the provided dataset and tested against different levels of noise.
+It was found that the algorithm is robust against different levels and types of noise (Gaussian, Salt & Pepper) and that the results are very promising. However this is not enough to validate the algorithm and further testing is required, see [main limitations of the project](#main-limitations-of-the-project).
+
+<p align="center">
+    <img src="Meta_Media/noise.jpeg" alt="Segmentation result" width="30%">
+    <br>
+    <i> Click on the image to see the full size version </i>
+</p>
+
+
+## Main limitations of the project:
+
+Due to time constraints, the algorithm was not tested on a validation dataset. This is a very important step in order to evaluate the robustness of the algorithm and to tune the parameters of the algorithm. However, the algorithm proved to be robust against different levels of noise so the results are promising and the algorithm could probably proceed to the next step of validation.
+
+#### Non-linear filter:
+
+This filter is a modified version of the sigmoid function. This function is used to enhance the contrast of the image in order to make the lesion more visible.
+
+$$
+    Def:
+    \begin{cases}
+        I(x,y) = \text{Original image} \\
+        \hat{I}(x,y) = \text{Enhanced image} \\
+    \end{cases}  
+$$
+
+The filter is based on the following operation:
+
+$$
+    \begin{equation}
+    \hat{I}(x,y) = \frac{1+g}{1+e^{k\frac{1}{2}-kI(x,y)}}-\frac{g}{2}
+    \end{equation}
+$$
+
+$$
+where:
+\begin{cases}
+        g = \text{gain} \\
+        k = \text{constant} \\
+    \end{cases}
+$$
+
+#### Recursive weighting factor:
+
+The recursive weighting factor is used to weight the centroids of the binarized areas of the previous slices in order to find the centroid of the binarized area of the current slice.
+
+$$
+\begin{equation}
+ weight_n = \frac{1}{1.2^n}
+\end{equation}
+$$
 
 
 --------------------------------------------------------------------------------------------------
