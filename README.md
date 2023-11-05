@@ -32,7 +32,7 @@ Consequently, the studied algorithms were implemented in Matlab and tested on re
 
 # Brief description of the projects:
 
-### Project 1: Hypnogram estimation from EEG signals during sleep.
+## Project 1: Hypnogram estimation from EEG signals during sleep.
 
 **Dataset:**
 
@@ -63,7 +63,7 @@ Consequently, the studied algorithms were implemented in Matlab and tested on re
     <i> Click on the image to see the full size version </i>
 </p>
 
-# Project 2: Quasi-Automatic Segmentation of lesions in brain MRI images.
+## Project 2: Quasi-Automatic Segmentation of lesions in brain MRI images.
 
 > **Q: Why is it called Quasi-Automatic Segmentation ?**
 > 
