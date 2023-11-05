@@ -95,13 +95,6 @@ The following method is graphically represented in the following document: [here
 
 The method developed is based on the following main steps:
 1. The very first slice of the MRI volume is selected by the field expert (FE) (presumably a radiologist) as well as the region of interest (ROI) in the first slice.
-
-<p align="center">
-    <img src="Meta_Media/sagittal_slice130.png" alt="Slice 130" width="30%">
-    <br>
-    <i> Slice 135: Click on the image to see the full size version </i>
-</p>
-
 2. The selected ROI is enhanced by the algorithm using a non-linear filter.
     This filter was one of the main contributions of the project since it was developed by the team. See the [Non-linear filter](#non-linear-filter) section for more details.
 3. The enhanced ROI is then binarized using one of the most common binarization techniques: Otsu's method.
@@ -112,6 +105,12 @@ This is achieved by repeating steps 2-4 for each slice of the MRI volume and sel
 NOTICE: In order not to "lose" the lesion in case of a wrong binarization, the algorithm keeps track of the previous binarizations and uses the centroids as a reference for the next slice by weighting them with a [recursive factor](#recursive-weighting-factor).
 
 **Results:**
+
+<p align="center">
+    <img src="Meta_Media/result_gif.gif" alt="Segmentation result" width="30%">
+    <br>
+    <i> Click on the image to see the full size version </i>
+</p>
 
 The algorithm was tested on the provided dataset and tested against different levels of noise.
 It was found that the algorithm is robust against different levels and types of noise (Gaussian, Salt & Pepper) and that the results are very promising. However this is not enough to validate the algorithm and further testing is required, see [main limitations of the project](#main-limitations-of-the-project).
