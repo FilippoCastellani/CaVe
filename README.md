@@ -7,10 +7,6 @@
 
 --------------
 
-# ⚠️ Disclaimer ⚠️
-This readme file is still under construction.
-Please come back later (3-4 days).
-
 # CaVe: Castellani - Vettori
 
 ## Scope: 
