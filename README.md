@@ -7,6 +7,9 @@
 
 --------------
 
+# ⚠️ Disclaimer ⚠️
+This readme file is still under construction.
+Please come back later (3-4 days).
 
 # CaVe: Castellani - Vettori
 
@@ -29,6 +32,21 @@ These projects deal with two very different topics:
 During the course of the project, the **aim** was to **develop algorithms** that could sove the tasks **and critically evaluate the obtained results**.
 In order to do so a starting bibliography on the state of the art in the task-related field was given in order to kickstart the research.
 Consequently, the studied algorithms were implemented in Matlab and tested on real data furnished by the professor.
+
+## Repository structure:
+
+```bash
+
+CaVe
+├── Project1
+│   ├── Bibliography
+│   ├── Versions_(Backups)
+|
+├── Project2
+    ├── Dataset_&_Bibliography
+    ├── Versions_(Backups)
+    
+```
 
 # Brief description of the projects:
 
@@ -126,6 +144,8 @@ It was found that the algorithm is robust against different levels and types of 
 
 Due to time constraints, the algorithm was not tested on a validation dataset. This is a very important step in order to evaluate the robustness of the algorithm and to tune the parameters of the algorithm. However, the algorithm proved to be robust against different levels of noise so the results are promising and the algorithm could probably proceed to the next step of validation.
 
+## Additional information:
+
 #### Non-linear filter:
 
 This filter is a modified version of the sigmoid function. This function is used to enhance the contrast of the image in order to make the lesion more visible.
@@ -153,6 +173,10 @@ where:
         k = \text{constant} \\
     \end{cases}
 $$
+
+<!--
+TODO: Add image of the filter
+-->
 
 #### Recursive weighting factor:
 
