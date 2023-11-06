@@ -163,7 +163,7 @@ It was found that the algorithm is robust against different levels and types of 
 
 #### Non-linear filter:
 
-This filter is a modified version of the sigmoid function. This function is used to enhance the contrast of the image in order to make the lesion more visible.
+This filter is a modified version of the sigmoid function. This function is used to enhance the contrast of the image in order to make the lesion more "visible" and hence easier to segment for the algorithm.
 
 $$
     Def:
@@ -189,9 +189,30 @@ where:
     \end{cases}
 $$
 
-<!--
-TODO: Add image of the filter
--->
+Furthermore, the function is clipped to the range [0,255] in order to avoid overflow and underflow:
+
+$$
+
+    \begin{cases}
+        \hat{I}(x,y) = 255 \text{ if } \hat{I}(x,y) > 255 \\
+        \hat{I}(x,y) = 0 \text{ if } \hat{I}(x,y) < 0 \\
+    \end{cases}
+$$
+
+<p align="center">
+    <img src="Meta_Media/sigmoid.png" alt="Sigmoid function" width="20%">
+    <br>
+    Figure: Non-linear filter with parameters g = 0.2 and k = 10
+</p>
+
+Example of the filter applied to the original image:
+
+<p align="center">
+    <img src="Meta_Media/enhanced_slice.png" alt="Filter example" width="60%">
+    <br>
+    <i> Click on the image to see the full size version </i>
+</p>
+
 
 #### Recursive weighting factor:
 
@@ -203,6 +224,12 @@ $$
 \end{equation}
 $$
 
+The following is an intuitive representation of the recursive weighting factor:
+
+<p align="center">
+    <img src="Meta_Media/intuition_weigth.png" alt="Recursive weighting factor" width="15%">
+    <br>
+</p>
 
 --------------------------------------------------------------------------------------------------
 
