@@ -34,12 +34,24 @@ Consequently, the studied algorithms were implemented in Matlab and tested on re
 
 CaVe
 ├── Project1
-│   ├── Bibliography
-│   ├── Versions_(Backups)
+│   ├── Bibliography                                                # Bibliography on the state of the art
+│   ├── Versions_(Backups)                                          # Backups of the project
+|   ├── BIOMEDICAL_SIGNAL_PROCESSING_ASSIGNMENT_Castellani_Vettori  # Final version of the project
+|   |   ├── ppt_EEG_Hypnogram_Vettori_Castellani_FINAL.pdf          # Final presentation
+|   |   ├── Project Report.pdf                                      # Final report
+|   |   ├── Matlab_Scripts                                          # Matlab scripts and functions
+|   |   └── ...
+|   └── ...
 |
-├── Project2
-    ├── Dataset_&_Bibliography
-    ├── Versions_(Backups)
+└── Project2
+    ├── Dataset_and_Bibliography                                    # Dataset and bibliography on the state of the art
+    ├── Versions_(Backups)                                          # Backups of the project
+    ├── MEDICAL_IMAGES_ASSIGNMENT_Vettori_Castellani                # Final version of the project
+    |   ├── ppt_presentation.pdf                                    # Final presentation
+    |   ├── Project Report.pdf                                      # Final report
+    |   ├── Matlab_Scripts                                          # Matlab scripts and functions
+    └── ...
+
     
 ```
 
@@ -143,7 +155,7 @@ NOTICE: In order not to "lose" the lesion in case of a wrong binarization, the a
 **Results:**
 
 <p align="center">
-    <img src="Meta_Media/result_gif.gif" alt="Segmentation result" width="30%">
+    <img src="Meta_Media/result_gif.gif" alt="Segmentation result" width="50%">
     <br>
     <i> Click on the image to see the full size version </i>
 </p>
