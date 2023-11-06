@@ -72,17 +72,29 @@ The following method is graphically represented in the following document: [here
 - Pre-processing of the signal (band-pass filtering [0.1-90 Hz] + 50 Hz Electric Noise removal)
 - Non-parametric spectral estimation (Welch's modified periodogram)
     - The epochs are 3 minutes long and an Hann/Hamming window of 30 seconds is used along with a 50% overlap between consecutive epochs. This is done in order to reduce the variance of the PSD estimate.
-- Sleep stage classification (based on Power In Band (PIB) estimation)
+- Sleep stage classification based on Power In Band (PIB) estimation.
     - The PIB is estimated by integrating the PSD in the respective band: δ (0.5-4 Hz) / θ (4-8 Hz) / α (8-12 Hz) / β (12-30 Hz) / γ (30-50 Hz)
     - The proposed algorithm for classification is called _Priority Assignment_. Such name origins from the fact that the algorithm gives priority to less frequent but crucial events which still happens enough times to overcome an “occurrency threshold”.
 
 **Results:**
 
+Very similar results were obtained by the algorithm which was compared to the results obtained by state of the art techniques.
+
+Hypnogram obtained by the algorithm:
 <p align="center">
-    <img src="Meta_Media/Hypnogram_result.jpg" alt="Hypnogram result" width="60%" height="60%">
+    <img src="Meta_Media/Hypnogram_result.jpg" alt="Hypnogram result" width="30%">
     <br>
     <i> Click on the image to see the full size version </i>
 </p>
+
+Hypnogram example obtained by the state of the art technique:
+
+<p align="center">
+    <img src="Project1/Media/PPT_Presentation/Hypnograms_example.jpg" alt="Hypnogram example" width="30%">
+    <br>
+    <i> Click on the image to see the full size version </i>
+</p>
+
 
 ## Project 2: Quasi-Automatic Segmentation of lesions in brain MRI images.
 
