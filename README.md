@@ -47,8 +47,7 @@ CaVe
 
 Due to the absence of ground truth data and time constraints, the algorithms were not tested on a validation dataset. This is a very important step in order to evaluate the robustness of any algorithm and to tune the parameters of the algorithm. 
 
-However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities. 
-### Also, the results are promising so that the algorithm could proceed onto the next step of validation.
+However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities.These results are highly promising, indicating the algorithm's readiness for the next stage of validation.
 
 # Brief description of the projects:
 
