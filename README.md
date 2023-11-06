@@ -44,6 +44,12 @@ CaVe
     
 ```
 
+## Main limitations of the projects:
+
+Due to the absence of ground truth data and time constraints, the algorithms were not tested on a validation dataset. This is a very important step in order to evaluate the robustness of any algorithm and to tune the parameters of the algorithm. 
+
+However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities. Also the results are promising so that the algorithm could proceed onto the next step of validation.
+
 # Brief description of the projects:
 
 ## Project 1: Hypnogram estimation from EEG signals during sleep.
@@ -61,13 +67,14 @@ CaVe
 
 **Method:**
 
+The following method is graphically represented in the following document: [here](Project1/BIOMEDICAL_SIGNAL_PROCESSING_ASSIGNMENT_Castellani_Vettori/ppt_EEG_Hypnogram_Vettori_Castellani_FINAL.pdf).
+
 - Pre-processing of the signal (band-pass filtering [0.1-90 Hz] + 50 Hz Electric Noise removal)
- - ...
-<!-- - Through the estimation of the power spectral density of epochs of 3 minutes that is done with the modified Bartlett periodogram which uses a Hann/Hamming window of 30 seconds.
-        ◦ 
-    • For each obtained PSD (Power Spectral Density) Γ(f) the following procedure is performed:
-        ◦ 
-        ◦ -->
+- Non-parametric spectral estimation (Welch's modified periodogram)
+    - The epochs are 3 minutes long and an Hann/Hamming window of 30 seconds is used along with a 50% overlap between consecutive epochs. This is done in order to reduce the variance of the PSD estimate.
+- Sleep stage classification (based on Power In Band (PIB) estimation)
+    - The PIB is estimated by integrating the PSD in the respective band: δ (0.5-4 Hz) / θ (4-8 Hz) / α (8-12 Hz) / β (12-30 Hz) / γ (30-50 Hz)
+    - The proposed algorithm for classification is called _Priority Assignment_. Such name origins from the fact that the algorithm gives priority to less frequent but crucial events which still happens enough times to overcome an “occurrency threshold”.
 
 **Results:**
 
@@ -104,7 +111,6 @@ CaVe
 
 **Method:**
 
-
 The following method is graphically represented in the following document: [here](Project2/MEDICAL_IMAGES_ASSIGNMENT_Vettori_Castellani/ppt_presentation.pdf).
 
 The method developed is based on the following main steps:
@@ -135,10 +141,6 @@ It was found that the algorithm is robust against different levels and types of 
     <i> Click on the image to see the full size version </i>
 </p>
 
-
-## Main limitations of the project:
-
-Due to time constraints, the algorithm was not tested on a validation dataset. This is a very important step in order to evaluate the robustness of the algorithm and to tune the parameters of the algorithm. However, the algorithm proved to be robust against different levels of noise so the results are promising and the algorithm could probably proceed to the next step of validation.
 
 ## Additional information:
 
