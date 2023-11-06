@@ -203,11 +203,10 @@ $$
 Furthermore, the function is clipped to the range [0,255] in order to avoid overflow and underflow:
 
 $$
-
-    \begin{cases}
-        \hat{I}(x,y) = 255 \text{ if } \hat{I}(x,y) > 255 \\
-        \hat{I}(x,y) = 0 \text{ if } \hat{I}(x,y) < 0 \\
-    \end{cases}
+\begin{cases}
+    \hat{I}(x,y) = 255 \text{ if } \hat{I}(x,y) > 255 \\
+    \hat{I}(x,y) = 0 \text{ if } \hat{I}(x,y) < 0 \\
+\end{cases}
 $$
 
 <p align="center">
