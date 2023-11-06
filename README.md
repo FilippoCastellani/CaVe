@@ -18,15 +18,14 @@ Two projects realized by a team of students from Politecnico di Milano.
 
 ##### Authors: Filippo Castellani, Gaia Vettori
 
-
 ## What does it do ?
 
 These projects deal with two very different topics:
  1. Hypnogram estimation from EEG signals during sleep.
  2. Quasi-Automatic Segmentation of lesions in brain MRI images.
 
-During the course of the project, the **aim** was to **develop algorithms** that could sove the tasks **and critically evaluate the obtained results**.
-In order to do so a starting bibliography on the state of the art in the task-related field was given in order to kickstart the research.
+During the course of the project, the **aim** was to **develop algorithms** that could solve the tasks and **critically evaluate** the obtained results.
+In order to do so, a starting bibliography on the state of the art in the task-related field was given to kickstart the research.
 Consequently, the studied algorithms were implemented in Matlab and tested on real data furnished by the professor.
 
 ## Repository structure:
@@ -48,7 +47,8 @@ CaVe
 
 Due to the absence of ground truth data and time constraints, the algorithms were not tested on a validation dataset. This is a very important step in order to evaluate the robustness of any algorithm and to tune the parameters of the algorithm. 
 
-However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities. Also the results are promising so that the algorithm could proceed onto the next step of validation.
+However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities. 
+### Also, the results are promising so that the algorithm could proceed onto the next step of validation.
 
 # Brief description of the projects:
 
@@ -63,24 +63,26 @@ However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segm
 
 
 **Purpose:**
-- To characterize the sleep stages of the patient (NREM 1/2/3/4 and REM)
+Characterize the sleep stages of the patient ( NREM 1 - 2 - 3/4 and REM )
 
 **Method:**
 
-The following method is graphically represented in the following document: [here](Project1/BIOMEDICAL_SIGNAL_PROCESSING_ASSIGNMENT_Castellani_Vettori/ppt_EEG_Hypnogram_Vettori_Castellani_FINAL.pdf).
+> The developed method is presented [here](Project1/BIOMEDICAL_SIGNAL_PROCESSING_ASSIGNMENT_Castellani_Vettori/ppt_EEG_Hypnogram_Vettori_Castellani_FINAL.pdf).
 
 - Pre-processing of the signal (band-pass filtering [0.1-90 Hz] + 50 Hz Electric Noise removal)
 - Non-parametric spectral estimation (Welch's modified periodogram)
     - The epochs are 3 minutes long and an Hann/Hamming window of 30 seconds is used along with a 50% overlap between consecutive epochs. This is done in order to reduce the variance of the PSD estimate.
 - Sleep stage classification based on Power In Band (PIB) estimation.
     - The PIB is estimated by integrating the PSD in the respective band: δ (0.5-4 Hz) / θ (4-8 Hz) / α (8-12 Hz) / β (12-30 Hz) / γ (30-50 Hz)
-    - The proposed algorithm for classification is called _Priority Assignment_. Such name origins from the fact that the algorithm gives priority to less frequent but crucial events which still happens enough times to overcome an “occurrency threshold”.
+    - The classification algorithm utilized is known as "Priority Assignment," a name derived from its distinctive approach of assigning priority to infrequent yet pivotal events that still occur often enough to surpass a predefined "occurrence threshold."
+
 
 **Results:**
 
-Very similar results were obtained by the algorithm which was compared to the results obtained by state of the art techniques.
+The algorithm produced results that closely resembled those obtained using state-of-the-art techniques.
+Hypnogram obtained by the algorithm. Unfortunately, this was not tested on a validation dataset, see [main limitations of the projects](#main-limitations-of-the-projects).
 
-Hypnogram obtained by the algorithm:
+
 <p align="center">
     <img src="Meta_Media/Hypnogram_result.jpg" alt="Hypnogram result" width="30%">
     <br>
@@ -95,12 +97,14 @@ Hypnogram example obtained by the state of the art technique:
     <i> Click on the image to see the full size version </i>
 </p>
 
+The most valuable addition of such an algorithm is that it is completely automatic and does not require any manual intervention. Currently, the state of the art techniques require the Field Expert (FE) to manually inspect many hours of EEG recordings and manually annotate the sleep stages. This is a very time-consuming task and is prone to human error.
+
 
 ## Project 2: Quasi-Automatic Segmentation of lesions in brain MRI images.
 
 > **Q: Why is it called Quasi-Automatic Segmentation ?**
 > 
-> **A:** Quasi-Automatic means that the user has to manually select the region of interest (ROI) in the first slice of the MRI image, and then the algorithm will automatically segment the lesion in the other slices of the image.
+> **A:** "Quasi-Automatic" refers to the approach where the user initiates the segmentation process by manually selecting the region of interest (ROI) in the first slice of the MRI image. Subsequently, the algorithm takes over and automatically performs lesion segmentation in the remaining slices of the image. This hybrid method streamlines the segmentation process while still requiring an initial user interaction to define the area of interest.
 
 **Dataset:**
 
@@ -116,23 +120,24 @@ Hypnogram example obtained by the state of the art technique:
 </p>
 
 **Purpose:**
-- Segment the lesion and calculate the respective cross-sectional area over sagittal slice number 135.
-- Identify sagittal slices that contain the lesion and extend the quantification of its cross-sectional area to the whole volume.
-- Repeat this process across axial slices.
-- Add noise to the original dataset and check the performances of your implemented workflow with respect to different levels of noise.
+
+- The primary objective of this project is to segment the lesion and calculate its cross-sectional area specifically in the sagittal slice number 135;
+- Following the initial segmentation, the secondary goal is to identify sagittal slices containing the lesion and extend the quantification of its cross-sectional area to the entire volume of interest;
+- This segmentation process is then repeated across axial slices, enabling a comprehensive assessment of the lesion's extent and characteristics;
+- As a part of the project's evaluation, noise is intentionally introduced into the original dataset. The objective is to systematically investigate the performance of the implemented workflow under various levels of noise, providing valuable insights into its robustness and reliability.
 
 **Method:**
 
-The following method is graphically represented in the following document: [here](Project2/MEDICAL_IMAGES_ASSIGNMENT_Vettori_Castellani/ppt_presentation.pdf).
+> The developed method is presented [here](Project2/MEDICAL_IMAGES_ASSIGNMENT_Vettori_Castellani/ppt_presentation.pdf).
 
 The method developed is based on the following main steps:
-1. The very first slice of the MRI volume is selected by the field expert (FE) (presumably a radiologist) as well as the region of interest (ROI) in the first slice.
-2. The selected ROI is enhanced by the algorithm using a non-linear filter.
-    This filter was one of the main contributions of the project since it was developed by the team. See the [Non-linear filter](#non-linear-filter) section for more details.
+1. The very first slice of the MRI volume is selected by the Field Expert (FE) (presumably a radiologist) as well as the region of interest (ROI) in the first slice;
+2. The selected ROI is enhanced by the algorithm using a non-linear filter;
+    This filter was one of the main contributions of the project since it was developed by the team. See the [Non-linear filter](#non-linear-filter) section for more details;
 3. The enhanced ROI is then binarized using one of the most common binarization techniques: Otsu's method.
-4. The binarized ROI is then proposed to the FE for approval. If the FE approves the binarization, the algorithm proceeds to the next step, otherwise the FE can manually modify the binarization.
+4. The binarized ROI is then proposed to the FE for approval. If the FE approves the binarization, the algorithm proceeds to the next step, otherwise the FE can manually modify the binarization;
 5. The algorithm then proceeds automatically to the segmentation of the lesion in the other slices of the MRI.
-This is achieved by repeating steps 2-4 for each slice of the MRI volume and selecting the binarized area that has the closest overlap with the centroid of the binarized area of the previous slice.
+This is achieved by repeating steps 2-4 for each slice of the MRI volume and selecting the binarized area that has the closest overlap with the centroid of the binarized area of the previous slice;
 
 NOTICE: In order not to "lose" the lesion in case of a wrong binarization, the algorithm keeps track of the previous binarizations and uses the centroids as a reference for the next slice by weighting them with a [recursive factor](#recursive-weighting-factor).
 
