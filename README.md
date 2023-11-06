@@ -28,6 +28,9 @@ During the course of the project, the **aim** was to **develop algorithms** that
 In order to do so, a starting bibliography on the state of the art in the task-related field was given to kickstart the research.
 Consequently, the studied algorithms were implemented in Matlab and tested on real data furnished by the professor.
 
+## What software is required to run the projects scripts ?
+ - **Matlab R2020b** was used for the development of the projects. So at least this version is recommended to run the scripts.
+
 ## Repository structure:
 
 ```bash
@@ -55,13 +58,14 @@ CaVe
     
 ```
 
+
 ## Main limitations of the projects:
 
 Due to the absence of ground truth data and time constraints, the algorithms were not tested on a validation dataset. This is a very important step in order to evaluate the robustness of any algorithm and to tune the parameters of the algorithm. 
 
 However, the algorithm developed for [Project 2](#project-2-quasi-automatic-segmentation-of-lesions-in-brain-mri-images) was tested against different levels of noise and proved to be robust against different types of noise (Gaussian, Salt & Pepper) at different intensities.These results are highly promising, indicating the algorithm's readiness for the next stage of validation.
 
-# Brief description of the projects:
+# Brief descriptions of the projects:
 
 ## Project 1: Hypnogram estimation from EEG signals during sleep.
 
@@ -243,7 +247,8 @@ The following is an intuitive representation of the recursive weighting factor:
 
 --------------------------------------------------------------------------------------------------
 
-## What software is required to run the projects scripts ?
- - **Matlab R2020b** was used for the development of the projects. So at least this version is recommended to run the scripts.
+## Thanks for reading!
+If you got this far, thank you for your attention and interest in the projects!
 
+### Gaia Vettori & Filippo Castellani
 
